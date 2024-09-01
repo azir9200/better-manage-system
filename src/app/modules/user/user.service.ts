@@ -1,38 +1,22 @@
-import config from '../../config';
-import { TStudent } from '../student/student.interface';
-import { Student } from '../student/student.model';
-import { TUser } from './user.interface';
-import { User } from './user.model';
-// import { TUser } from './user.interface';
-// import { User } from './user.model';
+import httpStatus from "http-status";
+import { TUser } from "./user.interface";
+import { userModel } from "./user.model";
+import AppError from "../../errors/appError";
 
-const createStudentIntoDB = async (password: string, studentData: TStudent) => {
-  // create a user object
-  const userData: Partial<TUser> = {};
-
-  //if password is not given , use deafult password
-  userData.password = password || (config.default_password as string);
-
-  //set student role
-  userData.role = 'student';
-
-  //set manually generated it
-  userData.id = '2030100001';
-
-  // create a user
-  const newUser = await User.create(userData);
-
-  //create a student
-  if (Object.keys(newUser).length) {
-    // set id , _id as user
-    studentData.id = newUser.id;
-    studentData.user = newUser._id; //reference _id
-
-    const newStudent = await Student.create(studentData);
-    return newStudent;
+const createUserIntoDB = async (payload: TUser) => {
+  const { email } = payload;
+  const isUserExists = await userModel.findOne({ email });
+  if (isUserExists) {
+    throw new AppError(
+      httpStatus.ALREADY_REPORTED,
+      "This User already exists!",
+      "create user with another email"
+    );
   }
+  const result = await userModel.create(payload);
+  return result;
 };
 
-export const UserServices = {
-  createStudentIntoDB,
+export const userServices = {
+  createUserIntoDB,
 };

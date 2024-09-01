@@ -10,11 +10,11 @@ app.use(express.json());
 app.use(cors());
 
 
-app.use('/api/v1', router);
+app.use('/api', router);
 
 app.get("/", (req: Request, res: Response) => {
   
-  res.send('My Better Server is running');
+  res.send('My Server is running');
 });
 
 app.use(globalErrorHandler);

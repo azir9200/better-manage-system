@@ -9,7 +9,7 @@ const notFound = (
     return res.status(httpStatus.NOT_FOUND).json({
         success:false,
         message: 'Hey Azir, API not Found !',
-        error: " ",
+        error: "",
     })
 };
 export default notFound;
