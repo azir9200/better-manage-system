@@ -9,40 +9,40 @@ const createProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Academic faculty is created successfully",
+    message: "Product is created successfully",
     data: result,
   });
 });
 
-const getAllService = catchAsync(async (req, res,) => {
+const getAllService = catchAsync(async (req, res) => {
   const result = await ProductServices.getAllProductFromDB();
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Services retrieved successfully !',
+    message: "Products retrieved successfully !",
     data: result,
   });
 });
 
-const getSingleService = catchAsync(async (req, res,) => {
+const getSingleService = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await ProductServices.getSingleProductFromDB(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Service retrieved successfully',
+    message: "Product retrieved successfully",
     data: result,
   });
 });
 
-const updateService = catchAsync(async (req, res) => {  
+const updateService = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await ProductServices.updateProductFromDB(id, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Service updated successfully',
+    message: "Product updated successfully",
     data: result,
   });
 });
@@ -53,7 +53,7 @@ const deleteService = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Service  deleted successfully',
+    message: "Service  deleted successfully",
     data: result,
   });
 });

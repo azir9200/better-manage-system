@@ -1,42 +1,38 @@
+import { NextFunction, Request, Response } from "express";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import config from "../config";
 import catchAsync from "../utils/catchAsync";
 import { UserRole } from "../modules/user/user.constant";
 import AppError from "../errors/appError";
-import httpStatus from "http-status";
-import jwt, { JwtPayload } from "jsonwebtoken";
-import config from "../config";
+import { userModel } from "../modules/user/user.model";
+import { verifyToken } from "../modules/auth/auth.utils";
 
-const auth = (...authRoles: (keyof typeof UserRole)[]) => {
-  return catchAsync(async (req, res) => {
-    //   token checking
-    const token = req.headers.authorization;
-    if (!token) {
-      throw new AppError(
-        httpStatus.UNAUTHORIZED,
-        "You do not have the necessary permissions to access this resource.",
-      );
+export const auth = (...requiredRoles: (keyof typeof UserRole)[]) => {
+  return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const accessToken = req.header("Authorization");
+
+    if (!accessToken) {
+      throw new AppError(401, "You have no access to this route");
     }
-    //   verification
-    jwt.verify(
-      token,
-      config.jwt_access_secret as string,
-      function (err, decoded) {
-        if (err) {
-          throw new AppError(
-            httpStatus.UNAUTHORIZED,
-            "You do not have the necessary permissions to access this resource.",
-            "Unauthorized Access"
-          );
-        }
-        const role = (decoded as JwtPayload).role;
-        if (authRoles && !authRoles.includes(role)) {
-          throw new AppError(
-            httpStatus.UNAUTHORIZED,
-            "You do not have the necessary permissions to access this resource.",
-            "Unauthorized Access"
-          );
-        }
-         
-      }
+
+    const verifiedToken = jwt.verify(
+      accessToken as string,
+      config.jwt_access_secret as string
     );
+
+    const { role, email } = verifiedToken as JwtPayload;
+    console.log(verifyToken, "very");
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      throw new AppError(401, "User not found");
+    }
+
+    if (!requiredRoles.includes(role)) {
+      throw new AppError(401, "You have no access to this route");
+    }
+    req.user = verifiedToken as JwtPayload;
+    next();
+    return user;
   });
 };

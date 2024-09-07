@@ -1,9 +1,10 @@
-
-export type TProduct =  {
+export type TProduct = {
   name: string;
-  price: number;
-  stockQuantity: number;
   description: string;
-  images: string[];
+  price: number;
   category: string;
-}
+  stock: number;
+  image: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+};
