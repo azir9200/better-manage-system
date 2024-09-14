@@ -3,13 +3,7 @@ import { TOrder } from "./order.interface";
 
 const OrderSchema = new Schema<TOrder>(
   {
-    // user: {
-    //   name: { type: String, required: true },
-    //   email: { type: String, required: true },
-    //   phone: { type: String, required: true },
-    //   address: { type: String, required: true },
-    // },
-
+  
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",

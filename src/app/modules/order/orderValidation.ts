@@ -2,15 +2,10 @@ import { z } from "zod";
 
 export const orderValidationSchema = z.object({
   body: z.object({
-    user: z.object({
-      name: z.string().min(1, { message: "User name is required" }),
-      email: z.string().email({ message: "Invalid email address" }),
-      phone: z.string().min(1, { message: "Phone number is required" }),
-      address: z.string().min(1, { message: "Address is required" }),
-    }),
+    user:z.string(),
     products: z.array(
       z.object({
-        product: z.string().min(1, { message: "Product ID is required" }), // Assuming ObjectId is a string
+        product: z.string().min(1, { message: "Product ID is required" }),
         quantity: z
           .number()
           .int()

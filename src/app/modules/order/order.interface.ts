@@ -1,11 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 export type TOrder = {
-  user: {
-      name: string,
-      email: string,
-      phone: string,
-      address: string
-  };
+  user: Types.ObjectId;
   
   products: Array<{
     product: mongoose.Schema.Types.ObjectId;

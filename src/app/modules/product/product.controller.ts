@@ -35,6 +35,16 @@ const getSingleService = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getCategoryService = catchAsync(async (req, res) => {
+  const { category } = req.params;
+  const result = await ProductServices.getSingleProductFromDB(category);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Product retrieved by category successfully",
+    data: result,
+  });
+});
 
 const updateService = catchAsync(async (req, res) => {
   const { id } = req.params;
@@ -62,6 +72,7 @@ export const productController = {
   createProduct,
   getAllService,
   getSingleService,
+  getCategoryService,
   updateService,
   deleteService,
 };

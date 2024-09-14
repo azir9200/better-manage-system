@@ -9,20 +9,22 @@ const router = express.Router();
 
 router.post(
   "/create",
+  auth(UserRole.admin),
   zodValidateRequest(productValidation.productValidationSchema),
   productController.createProduct
 );
 
 router.get(
   "/",
-  auth(UserRole.admin, UserRole.user),
   productController.getAllService
 );
 
 router.get("/:id", productController.getSingleService);
 
-router.put("/id", productController.updateService);
+router.get("/:category", productController.getCategoryService);
 
-router.delete("/id", productController.deleteService);
+router.put("/id",   auth(UserRole.admin,), productController.updateService);
+
+router.delete("/id",   auth(UserRole.admin,), productController.deleteService);
 
 export const productRoutes = router;
