@@ -1,5 +1,5 @@
-import orderModel from "../order/order.model";
-import { verifyPayment } from "./payment.utils";
+// import orderModel from "../order/order.model";
+// import { verifyPayment } from "./payment.utils";
 
 const confirmationService = async (transactionId: string) => {
   const verifyResponse = await verifyPayment(transactionId);
