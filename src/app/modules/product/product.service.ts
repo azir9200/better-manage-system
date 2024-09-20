@@ -23,14 +23,35 @@ const getCategoryProductFromDB = async (category: string) => {
 };
 
 const updateProductFromDB = async (id: string, payload: Partial<TProduct>) => {
-  const result = await ProductModel.findOneAndUpdate({ _id: id }, payload, {
-    new: true,
-  });
-  if (!result) {
-    throw new AppError(httpStatus.NOT_FOUND, "Data not found !");
+  if (!id) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Product ID is required.");
   }
+
+  const result = await ProductModel.findOneAndUpdate(
+    { _id: id },
+    { $set: payload }, // Update all fields provided in the payload
+    {
+      new: true,
+      runValidators: true,
+    }
+  ).lean();
+
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, "Product not found!");
+  }
+
   return result;
 };
+
+// const updateProductFromDB = async (id: string, payload: Partial<TProduct>) => {
+//   const result = await ProductModel.findOneAndUpdate({ _id: id }, payload, {
+//     new: true,
+//   });
+//   if (!result) {
+//     throw new AppError(httpStatus.NOT_FOUND, "Data not found !");
+//   }
+//   return result;
+// };
 
 const deleteServiceFromDB = async (id: string) => {
   const result = await ProductModel.findOneAndUpdate({ id });

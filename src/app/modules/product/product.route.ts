@@ -14,17 +14,14 @@ router.post(
   productController.createProduct
 );
 
-router.get(
-  "/",
-  productController.getAllService
-);
+router.get("/", productController.getAllService);
 
 router.get("/:id", productController.getSingleService);
 
 router.get("/:category", productController.getCategoryService);
 
-router.put("/id",   auth(UserRole.admin,), productController.updateService);
+router.put("/update/:id", productController.updateService);
 
-router.delete("/id",   auth(UserRole.admin,), productController.deleteService);
+router.delete("/delete/:id", productController.deleteService);
 
 export const productRoutes = router;
