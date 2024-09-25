@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { initiatePayment } from "../payment/payment.utils";
 import { OrderModel } from "./order.model";
 import { TUser } from "../user/user.interface";
 import { ProductModel } from "../product/product.model";
@@ -12,7 +11,7 @@ const createOrderIntoDB = async (orderData: any) => {
       const product = await ProductModel.findById(
         new mongoose.Types.ObjectId(item.product)
       );
-      // const result = await Product.find();
+     
     })
   );
 
@@ -28,9 +27,6 @@ const createOrderIntoDB = async (orderData: any) => {
   });
 
   await order.save();
-
-  //payment
-  initiatePayment();
 
   return order;
 };

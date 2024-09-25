@@ -15,7 +15,6 @@ const createUser = catchAsync(async (req, res) => {
 });
 
 const getMe = catchAsync(async (req, res) => {
-  console.log("req", req.user);
   const { email, role } = req.user;
 
   const result = await userServices.getMe(email, role);
