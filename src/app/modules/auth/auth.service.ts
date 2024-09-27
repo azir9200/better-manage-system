@@ -53,27 +53,27 @@ const loginUser = async (payload: TUserLogin) => {
   }
 };
 
-const refreshToken = async (token: string) => {
-  // checking token is valid
-  const decoded = verifyToken(token, config.jwt_refresh_secret as string);
+// const refreshToken = async (token: string) => {
+//   // checking token is valid
+//   const decoded = verifyToken(token, config.jwt_refresh_secret as string);
 
-  const { user } = decoded;
-  const jwtPayload = {
-    email: user.email,
-    role: user.role,
-  };
-  const accessToken = createToken(
-    jwtPayload,
-    config.jwt_access_secret as string,
-    config.jwt_access_expires_in as string
-  );
+//   const { user } = decoded;
+//   const jwtPayload = {
+//     email: user.email,
+//     role: user.role,
+//   };
+//   const accessToken = createToken(
+//     jwtPayload,
+//     config.jwt_access_secret as string,
+//     config.jwt_access_expires_in as string
+//   );
 
-  return {
-    accessToken,
-  };
-};
+//   return {
+//     accessToken,
+//   };
+// };
 
 export const authServices = {
   loginUser,
-  refreshToken,
+  // refreshToken,
 };
