@@ -43,16 +43,6 @@ const updateProductFromDB = async (id: string, payload: Partial<TProduct>) => {
   return result;
 };
 
-// const updateProductFromDB = async (id: string, payload: Partial<TProduct>) => {
-//   const result = await ProductModel.findOneAndUpdate({ _id: id }, payload, {
-//     new: true,
-//   });
-//   if (!result) {
-//     throw new AppError(httpStatus.NOT_FOUND, "Data not found !");
-//   }
-//   return result;
-// };
-
 const deleteServiceFromDB = async (id: string) => {
   const result = await ProductModel.findOneAndUpdate({ id });
   if (!result) {

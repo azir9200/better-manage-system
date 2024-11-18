@@ -1,13 +1,29 @@
-import mongoose, { model, Schema } from "mongoose";
-import { TOrder } from "./order.interface";
+import mongoose, { Schema, Document } from "mongoose";
 
-const OrderSchema = new Schema<TOrder>(
+interface IOrder extends Document {
+  user: {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+  };
+  products: Array<{
+    product: mongoose.Schema.Types.ObjectId;
+    quantity: number;
+  }>;
+  totalPrice: number;
+  status: string;
+  paymentStatus: string;
+  transactionId: string;
+}
+
+const OrderSchema: Schema = new Schema(
   {
-  
     user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
-      required: true,
+      name: { type: String, required: true },
+      email: { type: String, required: true },
+      phone: { type: String, required: true },
+      address: { type: String, required: true },
     },
     products: [
       {
@@ -46,4 +62,4 @@ const OrderSchema = new Schema<TOrder>(
   }
 );
 
-export const OrderModel = model<TOrder>("Order", OrderSchema);
+export default mongoose.model<IOrder>("Order", OrderSchema);

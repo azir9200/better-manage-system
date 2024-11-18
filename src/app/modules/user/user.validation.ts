@@ -7,8 +7,6 @@ const userValidationSchema = z.object({
     password: z
       .string()
       .min(6, { message: "Must be 6 or more characters long" }),
-      phone: z.string(),
-      address:z.string(),
     role: z.enum(["user", "admin"]).optional(),
   }),
 });
@@ -18,8 +16,6 @@ const updateUserValidations = z.object({
     name: z.string().optional(),
     email: z.string().optional(),
     password: z.string().optional(),
-    phone: z.string().optional(),
-    address:z.string().optional(),
     roll: z.string().optional(),
   }),
 });

@@ -1,11 +1,9 @@
-import { Router } from "express";
-import { orderController } from "./order.controller";
-import { auth } from "../../middlewares/auth";
-import { UserRole } from "../user/user.constant";
+import { Router } from 'express';
+import { createOrderController } from './order.controller';
 
 const router = Router();
 
 // Route to create an order
-router.post("/create",   auth(UserRole.admin, UserRole.user),  orderController.createOrder);
+router.post('/create', createOrderController);
 
 export const orderRoutes = router;

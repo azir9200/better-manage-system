@@ -1,14 +1,15 @@
-
+import { Date, Types } from 'mongoose';
 import { Model } from "mongoose";
 import { UserRole } from "./user.constant";
 
 export type TUser = {
+  _id?: Types.ObjectId;
   name: string;
   email: string;
   password: string;
-  phone: string;
-  address: string;
   role?: "user" | "admin";
+  createdAt?: Date;
+  updatedAt?: Date;
 };
 
 export interface User extends Model<TUser> {
