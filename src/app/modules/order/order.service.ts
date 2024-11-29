@@ -22,32 +22,35 @@ const createOrder = async (orderData: any) => {
       }
     })
   );
-
   const transactionId = `TXN-${Date.now()}`;
 
-  const order = new Order({
-    user,
+  // const order = new Order({
+  //   user,
+  //   products: productDetails,
+  //   totalPrice,
+  //   status: "Pending",
+  //   paymentStatus: "Pending",
+  //   transactionId,
+  // });
+  // console.log("hello order", order);
+  // await order.save();
+
+  const order = await Order.create({
+    user: user,
     products: productDetails,
     totalPrice,
-    status: "Pending",
-    paymentStatus: "Pending",
     transactionId,
   });
 
-  await order.save();
   const paymentData = {
     transactionId,
     totalPrice: order.totalPrice,
     customerName: user.name,
     customerEmail: user.email,
-    customerPhone: user.phone,
-    customerAddress: user.address,
   };
 
   //payment
   const paymentSession = await initiatePayment(paymentData);
-
-  console.log("payment Session, order service", paymentSession);
 
   return paymentSession;
 };

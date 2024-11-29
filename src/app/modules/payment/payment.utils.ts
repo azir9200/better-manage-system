@@ -17,18 +17,19 @@ export const initiatePayment = async (paymentData: any) => {
     amount: paymentData.totalPrice,
     currency: "BDT",
     desc: "Merchant Registration Payment",
-    cus_name: paymentData.customerName,
+    cus_add1: "N/A",
+    cus_name: "N/A",
     cus_email: paymentData.customerEmail,
-    cus_add1: paymentData.customerAddress,
+    // cus_add1: paymentData.customerAddress,
     cus_add2: "N/A",
     cus_city: "N/A",
     cus_state: "N/A",
     cus_postcode: "N/A",
     cus_country: "N/A",
-    cus_phone: paymentData.customerPhone,
+    cus_phone: "N/A",
     type: "json",
   });
-  console.log("Response", response);
+  // console.log("Response", response);
   return response.data;
 };
 

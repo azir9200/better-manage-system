@@ -16,4 +16,5 @@ router.post(
 //   zodValidateRequest(authValidations.refreshTokenValidationSchema),
 //   authControllers.refreshToken,
 // );
+
 export const authRoutes = router;

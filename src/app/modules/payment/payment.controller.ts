@@ -8,15 +8,14 @@ const confirmationController = async (req: Request, res: Response) => {
     transactionId as string,
     status as string
   );
- // res.redirect("https://imagine-redux-story.vercel.app/payment/success");
-   res.redirect("http://localhost:5173/payment/success");
+  // res.redirect("https://imagine-redux-story.vercel.app/payment/success");
+  res.redirect("http://localhost:5173/payment/success");
 };
 
 //if payment failed
 const confirmationFailed = async (req: Request, res: Response) => {
- // res.redirect("https://imagine-redux-story.vercel.app/payment/failed");
+  // res.redirect("https://imagine-redux-story.vercel.app/payment/failed");
   res.redirect("http://localhost:5173/payment/failed");
-  // res.send(`  <h2>Payment FAILED FOR NOW <h2/>`);
 };
 export const paymentController = {
   confirmationController,

@@ -19,6 +19,7 @@ const createUserIntoDB = async (payload: TUser) => {
 
 const getMe = async (email: string, role: string) => {
   let result = null;
+
   if (role === "admin") {
     result = await userModel.findOne({ email: email });
   }

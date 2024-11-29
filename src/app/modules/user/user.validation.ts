@@ -8,6 +8,7 @@ const userValidationSchema = z.object({
       .string()
       .min(6, { message: "Must be 6 or more characters long" }),
     role: z.enum(["user", "admin"]).optional(),
+    address: z.string(),
   }),
 });
 

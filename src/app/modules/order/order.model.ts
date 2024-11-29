@@ -4,8 +4,6 @@ interface IOrder extends Document {
   user: {
     name: string;
     email: string;
-    phone: string;
-    address: string;
   };
   products: Array<{
     product: mongoose.Schema.Types.ObjectId;
@@ -22,8 +20,6 @@ const OrderSchema: Schema = new Schema(
     user: {
       name: { type: String, required: true },
       email: { type: String, required: true },
-      phone: { type: String, required: true },
-      address: { type: String, required: true },
     },
     products: [
       {
