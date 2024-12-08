@@ -8,7 +8,9 @@ export const initiatePayment = async (paymentData: any) => {
     tran_id: paymentData.transactionId,
 
     // success_url: `https://imagine-redux-story.vercel.app/api/payment/confirmation/success?transactionId=${paymentData.transactionId}&status=success`,
+
     // fail_url: `https://imagine-redux-story.vercel.app/api/payment/confirmation/failed?status=failed`,
+    
     // cancel_url: "https://imagine-redux-story.vercel.app",
 
     success_url: `http://localhost:5000/api/payment/confirmation/success?transactionId=${paymentData.transactionId}&status=success`,
@@ -29,7 +31,8 @@ export const initiatePayment = async (paymentData: any) => {
     cus_phone: "N/A",
     type: "json",
   });
-  // console.log("Response", response);
+  console.log("Response", response);
+  console.log("Response url azir", response.data.success_url);
   return response.data;
 };
 

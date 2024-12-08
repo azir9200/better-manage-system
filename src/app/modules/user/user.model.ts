@@ -1,7 +1,8 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import bcrypt from "bcrypt";
-import { TUser, User } from "./user.interface";
+import { TUser, User, TCart  } from "./user.interface";
 import config from "../../config";
+import { object } from "zod";
 
 const userSchema = new Schema<TUser, User>(
   {
@@ -10,6 +11,10 @@ const userSchema = new Schema<TUser, User>(
     password: { type: String, required: true, select: 0 },
     address: { type: String, required: true },
     role: { type: String, enum: ["user", "admin"], default: "user" },
+    cart:  {type:[   {
+      id: Types.ObjectId,
+      count: Number,
+    }]} ,
   },
   {
     timestamps: true,

@@ -1,5 +1,6 @@
 import { initiatePayment } from "../payment/payment.utils";
 import { ProductModel } from "../product/product.model";
+import { userModel } from "../user/user.model";
 import Order from "./order.model";
 
 const createOrder = async (orderData: any) => {
@@ -13,6 +14,12 @@ const createOrder = async (orderData: any) => {
       const product = await ProductModel.findById(item.product);
       if (product) {
         totalPrice += product.price * item.quantity;
+        await userModel.findOneAndUpdate(
+          { _id: user._id },
+          {
+            $push: { cart: { $each: products } },
+          }
+        );
         return {
           product: product._id,
           quantity: item.quantity,
@@ -22,18 +29,8 @@ const createOrder = async (orderData: any) => {
       }
     })
   );
-  const transactionId = `TXN-${Date.now()}`;
 
-  // const order = new Order({
-  //   user,
-  //   products: productDetails,
-  //   totalPrice,
-  //   status: "Pending",
-  //   paymentStatus: "Pending",
-  //   transactionId,
-  // });
-  // console.log("hello order", order);
-  // await order.save();
+  const transactionId = `TXN-${Date.now()}`;
 
   const order = await Order.create({
     user: user,

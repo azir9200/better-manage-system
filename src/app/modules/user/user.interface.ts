@@ -1,6 +1,11 @@
-import { Date, Types } from 'mongoose';
+import { Date, Types } from "mongoose";
 import { Model } from "mongoose";
 import { UserRole } from "./user.constant";
+
+export type TCart = {
+  id: Types.ObjectId;
+  count: Number;
+};
 
 export type TUser = {
   _id?: Types.ObjectId;
@@ -9,6 +14,7 @@ export type TUser = {
   password: string;
   address: string;
   role?: "user" | "admin";
+  cart: TCart[];
   createdAt?: Date;
   updatedAt?: Date;
 };
