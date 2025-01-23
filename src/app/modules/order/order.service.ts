@@ -1,6 +1,7 @@
 import { initiatePayment } from "../payment/payment.utils";
 import { ProductModel } from "../product/product.model";
-import { userModel } from "../user/user.model";
+import { User } from "../user/user.model";
+// import { userModel } from "../user/user.model";
 import Order from "./order.model";
 
 const createOrder = async (orderData: any) => {
@@ -14,7 +15,7 @@ const createOrder = async (orderData: any) => {
       const product = await ProductModel.findById(item.product);
       if (product) {
         totalPrice += product.price * item.quantity;
-        await userModel.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id: user._id },
           {
             $push: { cart: { $each: products } },

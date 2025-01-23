@@ -29,7 +29,7 @@ PORT=500, DB-URL, API KEY, PASSWORD HASHING SYSTEM, JWT SECRET etc
 This project is licensed under the MIT License - send me email for details.
 
 ## Contact
-
+here is details
 # My Name: mdAzirUddin
 
 # My Email: aziruddin83@gmail.com

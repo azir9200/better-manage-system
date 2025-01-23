@@ -1,31 +1,22 @@
-import { Date, Types } from "mongoose";
-import { Model } from "mongoose";
-import { UserRole } from "./user.constant";
-
-export type TCart = {
-  id: Types.ObjectId;
-  count: Number;
-};
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Model } from 'mongoose';
+import { UserRole } from './user.constant';
 
 export type TUser = {
-  _id?: Types.ObjectId;
+  _id?: string;
   name: string;
   email: string;
   password: string;
+  phone: string;
+  role: 'admin' | 'user';
   address: string;
-  role?: "user" | "admin";
-  cart: TCart[];
   createdAt?: Date;
   updatedAt?: Date;
 };
 
-export interface User extends Model<TUser> {
+export interface UserModel extends Model<TUser> {
   //instance methods for checking if the user exist
-  isUserExists(email: string): Promise<TUser>;
-  //instance methods for checking if passwords are matched
-  isPasswordMatched(
-    plainTextPassword: string,
-    hashedPassword: string
-  ): Promise<boolean>;
+  isUserExists(id: string): Promise<TUser>;
 }
+
 export type TUserRole = keyof typeof UserRole;

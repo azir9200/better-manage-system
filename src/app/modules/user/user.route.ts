@@ -1,22 +1,30 @@
 import express from "express";
+import { UserControllers } from "./user.controller";
 import zodValidateRequest from "../../middlewares/zodValidateRequest";
-import { userValidations } from "./user.validation";
-import { userController } from "./user.controller";
+import { UserValidations } from "./user.validation";
 import { auth } from "../../middlewares/auth";
 import { UserRole } from "./user.constant";
 
 const router = express.Router();
 
+// admin
 router.post(
-  "/register",
-  zodValidateRequest(userValidations.userValidationSchema),
-  userController.createUser
+  "/create",
+  // auth(UserRole.admin, UserRole.user),
+  zodValidateRequest(UserValidations.createUserValidationSchema),
+  UserControllers.createUser
 );
 
+//update
+router.put(
+  "/:userId",
+  zodValidateRequest(UserValidations.updateUserValidations),
+  UserControllers.updateUser
+);
 router.get(
-  "/get-me",
+  "/get-user",
   auth(UserRole.admin, UserRole.user),
-  userController.getMe
+  UserControllers.getUser
 );
 
-export const userRoutes = router;
+export const UserRoutes = router;

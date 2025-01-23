@@ -7,15 +7,15 @@ export const initiatePayment = async (paymentData: any) => {
     signature_key: config.signature_key,
     tran_id: paymentData.transactionId,
 
-    // success_url: `https://imagine-redux-story.vercel.app/api/payment/confirmation/success?transactionId=${paymentData.transactionId}&status=success`,
+    success_url: `https://imagine-redux-story.vercel.app/api/payment/confirmation/success?transactionId=${paymentData.transactionId}&status=success`,
 
-    // fail_url: `https://imagine-redux-story.vercel.app/api/payment/confirmation/failed?status=failed`,
-    
-    // cancel_url: "https://imagine-redux-story.vercel.app",
+    fail_url: `https://imagine-redux-story.vercel.app/api/payment/confirmation/failed?status=failed`,
 
-    success_url: `http://localhost:5000/api/payment/confirmation/success?transactionId=${paymentData.transactionId}&status=success`,
-    fail_url: `http://localhost:5000/api/payment/confirmation/failed?status=failed`,
-    cancel_url: "http://localhost:5173/",
+    cancel_url: "https://imagine-redux-story.vercel.app",
+
+    // success_url: `http://localhost:5000/api/payment/confirmation/success?transactionId=${paymentData.transactionId}&status=success`,
+    // fail_url: `http://localhost:5000/api/payment/confirmation/failed?status=failed`,
+    // cancel_url: "http://localhost:5173/",
     amount: paymentData.totalPrice,
     currency: "BDT",
     desc: "Merchant Registration Payment",

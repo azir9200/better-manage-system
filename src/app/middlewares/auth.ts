@@ -4,7 +4,7 @@ import config from "../config";
 import catchAsync from "../utils/catchAsync";
 import { UserRole } from "../modules/user/user.constant";
 import AppError from "../errors/appError";
-import { userModel } from "../modules/user/user.model";
+import { User } from "../modules/user/user.model";
 import { verifyToken } from "../modules/auth/auth.utils";
 
 export const auth = (...requiredRoles: (keyof typeof UserRole)[]) => {
@@ -22,7 +22,7 @@ export const auth = (...requiredRoles: (keyof typeof UserRole)[]) => {
 
     const { role, email } = verifiedToken as JwtPayload;
     console.log(verifyToken, "very");
-    const user = await userModel.findOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
       throw new AppError(401, "User not found");
