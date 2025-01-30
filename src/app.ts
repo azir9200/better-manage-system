@@ -11,9 +11,11 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "https://car-refresh-service-rbbocew9h-azir-uddins-projects.vercel.app",
-      "http://localhost:3000",
+      "https://imagine-redux-story-asf0oam8p-azir-uddins-projects.vercel.app",
+      //  "https://imagine-redux-story.vercel.app",
+      // "http://localhost:5173",
     ],
+
     credentials: true,
   })
 );

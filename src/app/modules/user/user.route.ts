@@ -22,7 +22,7 @@ router.put(
   UserControllers.updateUser
 );
 router.get(
-  "/get-user",
+  "/get-me",
   auth(UserRole.admin, UserRole.user),
   UserControllers.getUser
 );

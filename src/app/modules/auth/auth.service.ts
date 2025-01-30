@@ -29,7 +29,7 @@ const registerUser = async (payload: TRegisterUser) => {
     name: newUser.name,
     email: newUser.email,
     password: newUser.password,
-    phone: newUser.phone,
+    // phone: newUser.phone,
     role: newUser.role,
     address: newUser.address,
   };
@@ -76,7 +76,7 @@ const loginUser = async (payload: TUserLogin) => {
       name: user.name,
       email: user.email,
       password: user.password,
-      phone: user.phone,
+      // phone: user.phone,
       role: user.role,
       address: user.address,
     };
@@ -123,7 +123,7 @@ const refreshToken = async (token: string) => {
     name: user.name,
     email: user.email,
     password: user.password,
-    phone: user.phone,
+    // phone: user.phone,
     role: user.role,
     address: user.address,
   };

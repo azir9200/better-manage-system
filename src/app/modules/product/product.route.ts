@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post(
   "/create",
-  auth(UserRole.admin),
+  // auth(UserRole.admin),
   zodValidateRequest(productValidation.productValidationSchema),
   productController.createProduct
 );
