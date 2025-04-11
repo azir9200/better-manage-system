@@ -10,12 +10,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: [
-      "https://imagine-redux-story-asf0oam8p-azir-uddins-projects.vercel.app",
-      //  "https://imagine-redux-story.vercel.app",
-      // "http://localhost:5173",
-    ],
+    origin: "http://localhost:5173",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 
+    // origin: "https://imagine-redux-story.vercel.app",
     credentials: true,
   })
 );
