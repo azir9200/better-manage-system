@@ -11,30 +11,6 @@ export const seedProducts = async () => {
               "image": "https://i.ibb.co/Dtg75FD/risen-wang-20j-X9b35r-M-unsplash.jpg"
             },
             {
-              "name": "Elliptical Trainer",
-              "description": "Low-impact elliptical trainer for cardio workouts",
-              "price": 749.99,
-              "category": "Cardio Equipment",
-              "stock": 15,
-              "image": "https://i.ibb.co/cDkDhXL/victor-freitas-Jb-I04n-Yfa-Jk-unsplash.jpg"
-            },
-            {
-              "name": "Dumbbell Set",
-              "description": "Adjustable dumbbell set for various exercises",
-              "price": 199.99,
-              "category": "Strength Training",
-              "stock": 25,
-              "image": "https://i.ibb.co/rysKpbL/sam-sabourin-KZrw-KV90z-Rk-unsplash.jpg"
-            },
-            {
-              "name": "Kettlebells",
-              "description": "Set of kettlebells for strength and conditioning",
-              "price": 149.99,
-              "category": "Strength Training",
-              "stock": 18,
-              "image": "https://i.ibb.co/vmTr0Z6/anastase-maragos-i-Uzge-POo-Gko-unsplash.jpg"
-            },
-            {
               "name": "Yoga Mat",
               "description": "Non-slip yoga mat for comfort and stability",
               "price": 39.99,
