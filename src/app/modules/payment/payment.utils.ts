@@ -32,7 +32,7 @@ export const initiatePayment = async (paymentData: any) => {
     type: "json",
   });
   console.log("Response", response);
-  console.log("Response url azir", response.data.success_url);
+  console.log("Response url ", response.data.success_url);
   return response.data;
 };
 

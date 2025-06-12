@@ -10,10 +10,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    // origin: "http://localhost:5173",
 
-    // origin: "https://imagine-redux-story.vercel.app",
+    origin: "https://imagine-redux-story.vercel.app",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
 );
