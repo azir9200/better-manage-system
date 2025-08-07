@@ -4,6 +4,7 @@ import { authRoutes } from "../modules/auth/auth.route";
 import { orderRoutes } from "../modules/order/order.routes";
 import { PaymentRoutes } from "../modules/payment/payment.route";
 import { UserRoutes } from "../modules/user/user.route";
+import { categoryRoutes } from "../modules/categories/category.route";
 
 const router = Router();
 
